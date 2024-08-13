@@ -7,7 +7,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 public class Naukri_Home {
@@ -18,7 +22,12 @@ public class Naukri_Home {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://www.naukri.com/");
-        Thread.sleep(2000);
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(90));
+
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@title, 'Jobseeker Register')]")));
+
         driver.findElement(By.xpath("//a[contains(@title, 'Jobseeker Register')]")).click();
         Thread.sleep(3000);
         driver.findElement(By.linkText("Login")).click();
