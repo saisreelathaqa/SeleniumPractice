@@ -1,6 +1,7 @@
 package sample;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Sample2 {
     public static void main(String[] args) {
@@ -25,6 +26,6 @@ public class Sample2 {
         System.out.print(dummy);
     }
 
-    // Hi Em chesthunnav
-    // work chestunnag
+    //
+    //
 }
