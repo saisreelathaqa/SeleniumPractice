@@ -1,22 +1,22 @@
 package sample;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.File;
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
 public class Naukri_Home {
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, IOException {
 
         WebDriverManager.chromedriver().clearDriverCache().setup();
         WebDriver driver = new ChromeDriver();
@@ -64,6 +64,9 @@ public class Naukri_Home {
             if (item.getText().contains(optionText)) {
                 // Scroll the item into view
                 ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", item);
+                // Take screenshot
+                File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+                FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
                 // Click the item
                 item.click();
                 break;

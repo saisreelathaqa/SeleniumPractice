@@ -26,6 +26,4 @@ public class Sample2 {
         System.out.print(dummy);
     }
 
-    //
-    //
 }
